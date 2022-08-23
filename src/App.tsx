@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { SimpleForm } from './form';
 
 function App() {
+  const [value, setValue] = useState('Default value');
+  // const dispatch = useDispatch();
+
+  // useEffect(()=> {
+  //   console.log("useEffect")
+  // },[dispatch])
+  const callReducer = () => {
+    // dispatch("APP/BUTTON_ACTION", "My value");
+    setValue('Button clicked');
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      State: {value}
+      <button onClick={() => callReducer()}>Update state</button>
+      <SimpleForm />
     </div>
   );
 }
